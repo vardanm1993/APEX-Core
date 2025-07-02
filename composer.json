@@ -1,0 +1,28 @@
+{
+    "name": "apex-php/core",
+    "description": "Core package of the Genesis PHP framework — a modern, lightweight foundation for building scalable applications.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Apex\\Core\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Vardan M.",
+            "email": "vardanm1993@gmail.com",
+            "homepage": "https://github.com/vardanm1993",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.3"
+    },
+    "files": [
+      "src/Support/helpers.php"
+    ],
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
+
