@@ -9,6 +9,6 @@ class HttpServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->singleton(Request::class, fn() => new Request());
+        $this->app->singleton(Request::class, fn() => Request::capture());
     }
 }
