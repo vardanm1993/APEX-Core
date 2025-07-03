@@ -11,4 +11,4 @@ The core package of the APEX PHP Framework. It contains essential building block
 ### Option 1: From Packagist (Recommended)
 
 ```bash
-composer require vardanm1993/apex-core:^0.1
+composer require apex-php/core
