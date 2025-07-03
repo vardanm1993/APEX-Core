@@ -42,25 +42,33 @@ class Container
         $this->singletons[$abstract] = $concrete;
     }
 
+    /**
+     * @throws \ReflectionException
+     */
     public function make(string $abstract): object
     {
         if (isset($this->instances[$abstract])) {
             return $this->instances[$abstract];
         }
 
-        $concrete = $this->bindings[$abstract] ?? $abstract;
-
-        if ($concrete instanceof \Closure) {
-            $object = $concrete($this);
-        } else {
-            $object = $this->build($concrete);
-        }
-
         if (isset($this->singletons[$abstract])) {
+            $object = $this->resolveConcrete($this->singletons[$abstract]);
             $this->instances[$abstract] = $object;
+            return $object;
         }
 
-        return $object;
+        $concrete = $this->bindings[$abstract] ?? $abstract;
+        return $this->resolveConcrete($concrete);
+    }
+
+    /**
+     * @throws \ReflectionException
+     */
+    private function resolveConcrete(string|\Closure $concrete): object
+    {
+        return $concrete instanceof \Closure
+            ? $concrete($this)
+            : $this->build($concrete);
     }
 
     /**
