@@ -1,4 +1,4 @@
-# Genesis Core
+# APEX Core
 
 The core package of the APEX PHP Framework. It contains essential building blocks such as the service container (DI), routing logic, event dispatcher, and application lifecycle handler.
 
