@@ -6,7 +6,10 @@
     "autoload": {
         "psr-4": {
             "Apex\\Core\\": "src/"
-        }
+        },
+        "files": [
+            "src/Support/helpers.php"
+        ]
     },
     "authors": [
         {
@@ -19,9 +22,6 @@
     "require": {
         "php": "^8.3"
     },
-    "files": [
-      "src/Support/helpers.php"
-    ],
     "minimum-stability": "stable",
     "prefer-stable": true
 }
