@@ -1,7 +1,7 @@
 {
   "name": "apex-php/core",
-  "description": "Core package of the Genesis PHP framework — a modern, lightweight foundation for building scalable applications.",
-  "type": "library",
+  "description": "Core package of the Apex PHP framework — a modern, lightweight foundation for building scalable applications.",
+  "type": "composer-plugin",
   "license": "MIT",
   "autoload": {
     "psr-4": {
@@ -11,16 +11,13 @@
       "src/Support/helpers.php"
     ]
   },
+  "extra": {
+    "class": "Apex\\Core\\Install\\CoreInstallerPlugin"
+  },
   "bin": [
     "src/bin/apex",
     "src/bin/wave"
   ],
-  "scripts": {
-    "post-install-cmd": [
-      "@php vendor/apex-php/core/src/Install/hooks.php"
-    ]
-  },
-
   "authors": [
     {
       "name": "Vardan M.",
@@ -30,9 +27,12 @@
     }
   ],
   "require": {
-    "php": "^8.3"
+    "php": "^8.3",
+    "composer-plugin-api": "^2.0"
   },
   "minimum-stability": "stable",
-  "prefer-stable": true
+  "prefer-stable": true,
+  "require-dev": {
+    "composer/composer": "^2.8"
+  }
 }
-
