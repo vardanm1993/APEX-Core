@@ -1,0 +1,19 @@
+#!/usr/bin/env php
+
+<?php
+
+$paths = [
+    getcwd() . '/vendor/autoload.php',
+    __DIR__ . '/../../../../autoload.php', // запасной путь
+];
+
+foreach ($paths as $path) {
+    if (file_exists($path)) {
+        require $path;
+        break;
+    }
+}
+
+use Apex\Core\Install\DockerInstaller;
+
+DockerInstaller::copyDockerCompose();
