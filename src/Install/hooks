@@ -1,18 +1,28 @@
 #!/usr/bin/env php
-
 <?php
 
-$paths = [
-    getcwd() . '/vendor/autoload.php',
-    __DIR__ . '/../../../../autoload.php', // запасной путь
-];
+function findAutoload(string $startDir): ?string {
+    $dir = $startDir;
 
-foreach ($paths as $path) {
-    if (file_exists($path)) {
-        require $path;
-        break;
+    while ($dir !== '/') {
+        $autoload = $dir . '/vendor/autoload.php';
+        if (file_exists($autoload)) {
+            return $autoload;
+        }
+        $dir = dirname($dir);
     }
+
+    return null;
 }
+
+$autoloadPath = findAutoload(getcwd());
+
+if (!$autoloadPath) {
+    echo "❌ Could not find vendor/autoload.php\n";
+    exit(1);
+}
+
+require $autoloadPath;
 
 use Apex\Core\Install\DockerInstaller;
 
