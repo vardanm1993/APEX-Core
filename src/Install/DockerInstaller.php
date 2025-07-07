@@ -4,7 +4,7 @@ namespace Apex\Core\Install;
 
 class DockerInstaller
 {
-    public static function compyDockerCompose(): void
+    public static function copyDockerCompose(): void
     {
         $source = __DIR__ . "/../Wave/Docker/docker-compose.yml";
         $target = getcwd() . '/docker-compose.yml';
