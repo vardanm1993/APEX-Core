@@ -5,7 +5,6 @@ namespace Apex\Core\Container;
 class Container
 {
     protected array $bindings = [];
-
     protected array $singletons = [];
     protected array $instances = [];
 
@@ -34,7 +33,7 @@ class Container
 
     public function instance(string $abstract, mixed $instance): void
     {
-
+        $this->instances[$abstract] = $instance;
     }
 
     public function singleton(string $abstract, string|\Closure $concrete): void

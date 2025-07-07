@@ -9,14 +9,12 @@ class Bootstrap
     public static function boot(array $config = []): Container
     {
 
+        $config = array_merge_recursive(self::getCoreConfig(),$config);
+
         global $app;
-        $app = new Application();
+        $app = new Application($config);
 
-        $app->registerConfiguredProviders(self::getCoreConfig()['providers']);
-
-        if (isset($config['providers']) && is_array($config['providers'])) {
-            $app->registerConfiguredProviders($config['providers']);
-        }
+        $app->registerConfiguredProviders();
 
         return $app;
     }

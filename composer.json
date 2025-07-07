@@ -1,28 +1,40 @@
 {
-    "name": "apex-php/core",
-    "description": "Core package of the Genesis PHP framework — a modern, lightweight foundation for building scalable applications.",
-    "type": "library",
-    "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "Apex\\Core\\": "src/"
-        },
-        "files": [
-            "src/Support/helpers.php"
-        ]
+  "name": "apex-php/core",
+  "description": "Core package of the Genesis PHP framework — a modern, lightweight foundation for building scalable applications.",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Apex\\Core\\": "src/"
     },
-    "authors": [
-        {
-            "name": "Vardan M.",
-            "email": "vardanm1993@gmail.com",
-            "homepage": "https://github.com/vardanm1993",
-            "role": "Developer"
-        }
+    "files": [
+      "src/Support/helpers.php"
+    ]
+  },
+  "bin": [
+    "src/bin/apex",
+    "src/bin/wave"
+  ],
+  "scripts": {
+    "post-install-cmd": [
+      "Apex\\Core\\Install\\DockerInstaller::copyDockerCompose"
     ],
-    "require": {
-        "php": "^8.3"
-    },
-    "minimum-stability": "stable",
-    "prefer-stable": true
+    "post-update-cmd": [
+      "Apex\\Core\\Install\\DockerInstaller::copyDockerCompose"
+    ]
+  },
+  "authors": [
+    {
+      "name": "Vardan M.",
+      "email": "vardanm1993@gmail.com",
+      "homepage": "https://github.com/vardanm1993",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^8.3"
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
 }
 

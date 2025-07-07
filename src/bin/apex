@@ -1,0 +1,13 @@
+#!/usr/bin/env php
+
+<?php
+
+use Apex\Core\App\Bootstrap;
+use Apex\Core\Console\Kernel;
+
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+$app = Bootstrap::boot();
+
+$kernel = $app->make(Kernel::class);
+exit($kernel->handle($argv));

@@ -6,10 +6,11 @@ use Apex\Core\Container\Container;
 
 class Application extends Container
 {
+
     protected array $providers = [];
     protected array $loadedProviders = [];
 
-    public function __construct()
+    public function __construct(private readonly array $config)
     {
 
     }
@@ -32,9 +33,9 @@ class Application extends Container
         }
     }
 
-    public function registerConfiguredProviders(array $providers): void
+    public function registerConfiguredProviders(): void
     {
-        foreach ($providers as $providerClass) {
+        foreach ($this->config['providers'] as $providerClass) {
             $this->registerProvider($providerClass);
         }
     }
@@ -48,4 +49,10 @@ class Application extends Container
     {
         return $this->providers;
     }
+
+    public function getConfig(): array
+    {
+      return $this->config;
+    }
+
 }
