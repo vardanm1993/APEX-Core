@@ -17,12 +17,13 @@
   ],
   "scripts": {
     "post-install-cmd": [
-      "@php src/Install/hooks.php"
+      "@php vendor/apex-php/core/src/Install/hooks.php"
     ],
     "post-update-cmd": [
-      "@php src/Install/hooks.php"
+      "@php vendor/apex-php/core/src/Install/hooks.php"
     ]
   },
+
   "authors": [
     {
       "name": "Vardan M.",
