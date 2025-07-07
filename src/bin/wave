@@ -5,7 +5,7 @@
 use Apex\Core\App\Bootstrap;
 use Apex\Core\Console\Kernel;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+require getcwd() . '/vendor/autoload.php';
 
 $app = Bootstrap::boot();
 
