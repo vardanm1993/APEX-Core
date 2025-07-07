@@ -2,9 +2,9 @@
 <?php
 
 function findAutoload(string $startDir): ?string {
-    $dir = $startDir;
+    $dir = realpath($startDir);
 
-    while ($dir !== '/') {
+    while ($dir && $dir !== '/') {
         $autoload = $dir . '/vendor/autoload.php';
         if (file_exists($autoload)) {
             return $autoload;
@@ -15,7 +15,7 @@ function findAutoload(string $startDir): ?string {
     return null;
 }
 
-$autoloadPath = findAutoload(getcwd());
+$autoloadPath = findAutoload(__DIR__);
 
 if (!$autoloadPath) {
     echo "❌ Could not find vendor/autoload.php\n";
