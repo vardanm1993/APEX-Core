@@ -17,10 +17,7 @@
   ],
   "scripts": {
     "post-install-cmd": [
-      "Apex\\Core\\Install\\DockerInstaller::copyDockerCompose"
-    ],
-    "post-update-cmd": [
-      "Apex\\Core\\Install\\DockerInstaller::copyDockerCompose"
+      "@php vendor/apex-php/core/src/Install/hooks.php"
     ]
   },
 
