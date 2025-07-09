@@ -32,7 +32,7 @@ class Application extends Container
     public function registerConfiguredProviders(): void
     {
         $config = $this->make(ConfigRepository::class);
-        foreach ($config('app.providers',[]) as $providerClass) {
+        foreach ($config->get('app.providers',[]) as $providerClass) {
             $this->registerProvider($providerClass);
         }
     }

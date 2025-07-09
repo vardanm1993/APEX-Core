@@ -45,7 +45,7 @@ if (!function_exists('core_path')) {
 }
 
 if (!function_exists('config')) {
-    function config(string $key = null, mixed $default = null)
+    function config(?string $key = null, mixed $default = null)
     {
         $config = app()->make(ConfigRepository::class);
 
@@ -58,7 +58,7 @@ if (!function_exists('config')) {
 }
 
 if (!function_exists('env')) {
-    function env(string $key = null, mixed $default = null): mixed
+    function env(?string $key = null, mixed $default = null): mixed
     {
         $env = app()->make(EnvRepository::class);
 
