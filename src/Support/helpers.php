@@ -18,24 +18,29 @@ if (!function_exists('app')) {
 if (!function_exists('base_path')) {
     function base_path(string $path = ''): string
     {
-        $base = realpath(getcwd() . '/../');
+        $cwd = getcwd();
+
+        if (basename($cwd) === 'public') {
+            $base = dirname($cwd);
+        } else {
+            $base = $cwd;
+        }
 
         return $base . ($path ? '/' . ltrim($path, '/') : '');
     }
 }
 
-
 if (!function_exists('core_path')) {
     function core_path(string $path = ''): string
     {
-        static $srcPath;
+        static $coreSrcPath;
 
-        if (!$srcPath) {
+        if (!$coreSrcPath) {
             $reflection = new ReflectionClass(Application::class);
-            $srcPath = dirname($reflection->getFileName());
+            $coreSrcPath = dirname($reflection->getFileName(), 2);
         }
 
-        return rtrim($srcPath, '/') . ($path ? '/' . ltrim($path, '/') : '');
+        return rtrim($coreSrcPath, '/') . ($path ? '/' . ltrim($path, '/') : '');
     }
 }
 
