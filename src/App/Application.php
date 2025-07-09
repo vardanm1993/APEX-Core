@@ -3,17 +3,13 @@
 namespace Apex\Core\App;
 
 use Apex\Core\Container\Container;
+use Apex\Core\Repository\ConfigRepository;
 
 class Application extends Container
 {
 
     protected array $providers = [];
     protected array $loadedProviders = [];
-
-    public function __construct(private readonly array $config)
-    {
-
-    }
 
     public function registerProvider(string $providerClass): void
     {
@@ -35,7 +31,8 @@ class Application extends Container
 
     public function registerConfiguredProviders(): void
     {
-        foreach ($this->config['providers'] as $providerClass) {
+        $config = $this->make(ConfigRepository::class);
+        foreach ($config('app.providers',[]) as $providerClass) {
             $this->registerProvider($providerClass);
         }
     }
@@ -49,10 +46,4 @@ class Application extends Container
     {
         return $this->providers;
     }
-
-    public function getConfig(): array
-    {
-      return $this->config;
-    }
-
 }

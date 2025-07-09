@@ -40,7 +40,7 @@ class EnvRepository
     }
 
 
-    private function castNumber(string $result): int
+    private function castNumber(string $result): mixed
     {
         if (is_numeric($result)) {
             return $result + 0;
