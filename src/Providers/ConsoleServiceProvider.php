@@ -12,7 +12,7 @@ class ConsoleServiceProvider extends ServiceProvider
         $this->app->singleton(Kernel::class, function () {
             $kernel = new Kernel();
 
-            foreach ($this->app->getConfig()['commands'] as $command) {
+            foreach (config('app.commands') as $command) {
                 $kernel->registerCommands(new $command);
             }
 
