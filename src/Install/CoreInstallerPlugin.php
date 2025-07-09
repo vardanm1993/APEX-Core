@@ -34,5 +34,6 @@ class CoreInstallerPlugin implements PluginInterface, EventSubscriberInterface
     public static function onPostInstall(Event $event): void
     {
         DockerInstaller::copyDockerCompose();
+        EnvInstaller::copyEnvExample();
     }
 }
